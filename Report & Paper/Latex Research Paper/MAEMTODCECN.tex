@@ -12,7 +12,7 @@
 
 \begin{document}
 
-\title{Mobility-aware Energy Minimal Task Offloading with Delay constraints in Mobile Edge Computing Environment
+\title{Mobility-Aware Energy Minimal Task Offloading with Delay constraints in Mobile Edge Computing Environment
 }
 
 \author{\IEEEauthorblockN{Venkata Karthik Reddy Peddireddy}
@@ -21,7 +21,7 @@
 Warangal, India \\
 pvkr1998@gmail.com}
 \and
-\IEEEauthorblockN{Srirama Savitru V.V.S}
+\IEEEauthorblockN{Srirama Savitru V.V.V.S}
 \IEEEauthorblockA{\textit{Computer Science and Engineering} \\
 \textit{National Institute of Technology, Warangal}\\
 Warangal, India \\
@@ -33,7 +33,7 @@ savitruvajjhala@gmail.com}
 Warangal, India \\
 rchitawle@gmail.com}
 \and
-\IEEEauthorblockN{Dr.Rashmi Ranjan Rout}
+\IEEEauthorblockN{Dr. Rashmi Ranjan Rout}
 \IEEEauthorblockA{\textit{Computer Science and Engineering} \\
 \textit{National Institute of Technology, Warangal}\\
 Warangal, India \\
@@ -44,7 +44,7 @@ rashrr@nitw.ac.in}
 \maketitle
 
 \begin{abstract}
-Mobile Edge Computing (MEC) has emerged as a prospective computing paradigm to provide pervasive computing and storage services for mobile and big data applications. In MEC, many MEC servers are deployed at base stations to establish a mobile edge network (MEN). Mobile users are allowed to ofﬂoad mobile tasks to nearby mobile edge servers to speed up their mobile applications. Nevertheless, various challenges, especially the quality of such a mobile task ofﬂoading in the edge computing environment, are yet to be properly tackled. Most studies and related ofﬂoading strategies based on the assumption that mobile users are fully stationary when they are ofﬂoading tasks to edge servers. However, this is often not realistic in real-world where edge users are keeping moving, which has a great impact on the success of task ofﬂoading and further affects the response time of mobile applications. Our work aims at reducing the energy consumption and boost Quality of Services (QoS) by the scheduling of assignment of mobile tasks to MECs in their trajectories predicted by a Random waypoint Model. Specifically, we collectively contemplate the task properties, the user mobility and delay constraints. The problem is formalized as an optimization and constraint satisfaction problem. A near-optimal solution is proposed for scheduling mobiles tasks to MECs. We conduct simulation experiments to study the performance of the proposed work. The results show that our work can significantly scale back the energy consumption in MENs and also enhance QoS by executing task under constrained time.
+Mobile Edge Computing (MEC) has emerged as a prospective computing paradigm to provide pervasive computing and storage services for mobile and big data applications. In MEC, many MEC servers are deployed at base stations to establish a mobile edge network (MEN). Mobile users are allowed to ofﬂoad mobile tasks to nearby mobile edge servers to speed up their mobile applications. Nevertheless, various challenges, especially the quality of such a mobile task ofﬂoading in the edge computing environment, are yet to be properly tackled. Most studies and related ofﬂoading strategies based on the assumption that mobile users are fully stationary when they are ofﬂoading tasks to edge servers. However, this is often not realistic in real-world where edge users are keeping moving, which has a great impact on the success of task ofﬂoading and further affects the response time of mobile applications. Our work aims at reducing the energy consumption and boost Quality of Services (QoS) by the scheduling of assignment of mobile tasks to MECs in their trajectories predicted by a Random waypoint Model. Specifically, we collectively contemplate the task properties, the user mobility and delay constraints. The problem is formalized as an optimization and constraint satisfaction problem. A near-optimal solution is proposed for scheduling mobiles tasks to MECs. We conduct simulation experiments to study the performance of the proposed work. The results show that our work can significantly scale back the energy consumption in MENs and also enhance QoS by executing task under constrained time.\\
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -70,9 +70,17 @@ Mobile Edge Computing (MEC) was proposed to overcome the long delay of task of�
 \item The performance of the proposed scheme was evaluated by comparing energy consumption and task completion percentage with certain conventional schemes.
 \end{itemize}
 
+
 \section{System Model and Problem Formulation}
+
 \subsection{System Model}
 As shown in Fig. 1, Mobile Edge Network (MEN) consists of several Base Stations (BS), each equipped with a MEC server which is capable of receiving executing and transmitting computation tasks offloaded by users within the signal range of BS. Also, BSs communicate with each other using Central Base Station (CBS). Mobile users $MUs$ are allowed to offload their tasks to MEC servers to improve the task latency and to reduce energy consumption. Mobile users can move out of the signal range of a BS at any time because of the mobility. In Fig. 1, the user $MU_1$ moved out of $BS_1$ after offloading task $T_1$. In this case, MEC at $BS_1$ can transmit the offloaded task to MEC at $BS_2$ where the user currently is in. This way, all MECs, in the user's trajectory are capable of executing the offloaded task. 
+
+ \begin{figure}
+\centerline{\includegraphics[width=9.5cm, height=8cm]{F1MECNetwork.eps}}
+\caption{MEC Network}
+\label{fig.1}
+\end{figure}
 
   We consider $\mathbb{N}=\{1,2,\dots ,\ i,\dots ,N\}$ be the mobile users moving around the area under MEN. Each user is having a task $T_i$, denoted as a triple $(s_i,c_i,t^{max}_i)$ where $s_i$ is the size of the computational task, $c_i$ is the required computation resource (in cycles) and $t^{max}_i$ is the task deadline.  Also, there are a total of $M$ base stations each with signal range $r_j$ and the associated MEC having computation capacity $a_j$. 
 
@@ -83,7 +91,7 @@ As shown in Fig. 1, Mobile Edge Network (MEN) consists of several Base Stations 
 \subsubsection{Task Uploading}
 Mobile users first offload the task and the communication rate between user $i$ and server $j$ can be expressed as
 \begin{equation} \label{c_rate}
-r^u_{i,j}=B{{\mathrm{log}}_2 \left(1+\frac{{p_i}^td^{-\alpha }_{i,j}}{N_0B}\right) } 
+r^u_{i,j}=B{{\mathrm{log}}_2 \left(1+\frac{p_i^td^{-\alpha }_{i,j}}{N_0B}\right) } 
 \end{equation}
 where $B$ indicates the channel bandwidth, $d_{i,j}$ is the distance between the user $i$ and MEC server $j$, $N_0$ is the noise power spectral density, and $\alpha $ is the channel fading parameter. The uploading time depends on the communication rate and task size and can be denoted as
 \begin{equation} \label{t_upload}
@@ -99,7 +107,8 @@ where $p^t_i$ is the transmission power of mobile $i$ \\
 \subsubsection{Task Transmission}
 As MECs can communicate with each other by making use of CBS, the transmission rate between the server $j_1$ and $j_2$ can be expressed as 
 \begin{equation} \label{t_rate}
-r^{tr}_{j_1,j_2}=B{{\mathrm{log}}_2\left(1+\frac{{p^{\ }_{j_1}}^td^{-\alpha }_{j_1,j_2}}{N_0B}\right)}
+r^{tr}_{j_1,j_2}=B{{\mathrm{log}}_2
+\left(1+\frac{p_{j_1}^td^{-\alpha}_{j_1,j_2}}{N_0B}\right)}
 \end{equation}
 where $d_{j_1,j_2}$ is the distance between the server $j_1$ and ${j_2}_{\ }$. The transmission time and transmission energy can be formulated as
 \begin{equation} \label{t_trans}
@@ -141,11 +150,11 @@ s.t. & C1:{\ t}_{i,j}\le t^{max}_i\ ,\forall i\in N \\ \\
 
   The energy $E_{i,j}$ and time $t_{i,j}$ in the above formulation can be expressed as
 \begin{equation} \label{t_total}
-E_{i,j}=e^u_{i,j_1}+\sum^{t_2}_{t=t_1}e^{tr}_{{j\in S_i^t},\ {j\in S_i^{t+1}}} +e^c_{i,j} 
+E_{i,j}=e^u_{i,j_1}+\sum^{t_2}_{t=t_1}e^{tr}_{{j\in S_i^t},{j\in S_i^{t+1}}} +e^c_{i,j} 
 \end{equation}
 
 \begin{equation} \label{e_total}
-t_{i,j}=t^u_{i,j_1}+\sum^{t_2}_{t=t_1}t^{tr}_{{j\in S_i^t},\ {j\in S_i^{t+1}}} +t^c_{i,j} 
+t_{i,j}=t^u_{i,j_1}+\sum^{t_2}_{t=t_1}t^{tr}_{{j\in S_i^t},{j\in S_i^{t+1}}} +t^c_{i,j} 
 \end{equation}
 
 \[ \begin{array}{cc}
@@ -202,7 +211,7 @@ $p_j^t$ & transmission power of server $j$ \\
 $p_j^c$ & computation power of server $j$ \\
 \hline
 \end{tabular}
-\label{tab1}
+\label{table.1}
 \end{center}
 \end{table}
 
@@ -266,29 +275,8 @@ $p_j^c$ & computation power of server $j$ \\
  \end{algorithmic} 
  \end{algorithm}
  
-\section{Evaluation}
-In this section, we evaluated the performance of our proposed algorithm to achieve energy minimal task offloading with users’ mobility and delay constraints into consideration. we used data of base stations within the Melbourne central business district area in Australia, which has a total area of 6.2 $km^2$ provided by the Australian Communications and Media Authority \cite{b6}. There are a total of 126 base stations situated inside the Melbourne CBD area.
-	We follow the Random waypoint mobility model for the users moving in the area covered by the base stations provided in the dataset. The random waypoint model is a random model for the movement of mobile users, and how their location, velocity and acceleration change over time. 
-	Without loss of generality, we refer to the parameter settings in the existing works \cite{b2}, \cite{b7}. The coverage radius of BS is randomly taken varying from 70 to 100 meters and the associated MEC’s CPU capacity is in [7, 20] GHz, computation power is in [3,5] watts and transmission power ranges from 0.1 to 1 watt. The bandwidth of the communication channel is set up as 1MHz. Users are moving with the speed of 1~3 MPH and generate tasks with input data size varies from 1 MB to 3 MB having CPU requirement is in [1,10] GHz and deadline constraint within [0.1,1] seconds. Users’ mobiles are having CPU capacity ranges from 1 to 10 GHz, transmission power is randomly taken from [7,15] watts and computation power from [7,10] watts. We consider mobile-execution and random-allocation as our baseline algorithms:
-\begin{itemize}
-\item Local-Execution: Feasible Tasks satisfying delay constraint are executed within the mobiles without offloading. 
-\item Random-Allocation: Each user’s task is assigned to a server randomly chosen from the servers present along the user’s trajectory.
-\end{itemize}
  
-Fig. 2 depicts the higher Task completion percentage compared to the other 2 approaches by varying Task deadline constraint. DCEMTO’s task completion is 9.16\% higher than Random-Allocation and 27.08\% higher than Local-Execution on average. Also, Task completion percentage increases by increasing Deadline constraint.
-
-	Fig. 3 indicates the variation of average energy consumption with a change in the number of users. DCEMTO outperforms other approaches. Average energy consumption in DCEMTO is 10.5\% energy efficient than Random-Allocation and 46.5\% efficient than Local-Execution. 
-
-	Fig. 4 shows how energy consumption varies with varying task input size. It’s clear that higher the task input size, energy consumption increases. It is due to higher transmission energy needed in task offloading. Energy consumption in DCEMTO is 9.55\% efficient than Random-Allocation approach.
-
- \begin{figure}[htbp]
-\centerline{\includegraphics[width=11cm, height=8cm]{Figure_1.eps}}
-\caption{Example of a figure caption.}
-\label{fig}
-\end{figure}
-
-
- \begin{table}[htbp]
+\begin{table}
 \caption{Simulation Parameters}
 \begin{center}
 \begin{tabular}{|c|c|}
@@ -314,10 +302,50 @@ Input data size & [1,3] MB \\
 Task deadline constraint & [0.1,1] sec \\
 \hline
 \end{tabular}
-\label{tab1}
+\label{table.2}
 \end{center}
 \end{table}
  
+\section{Evaluation}
+
+\begin{figure}
+\centerline{\includegraphics[width=9.5cm, height=7cm]{F2TaskCompletionvsDeadline.eps}}
+\caption{Task Completion \% vs Task Deadline}
+\label{fig.2}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=9.5cm, height=7cm]{F3AvgECvsNoUsers.eps}}
+\caption{Avg Energy Consumption vs Number of Users}
+\label{fig.3}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=9.5cm, height=7cm]{F4TaskSizevsAvgEC.eps}}
+\caption{Task Input Size vs Energy Consumption}
+\label{fig.4}
+\end{figure}
+
+In this section, we evaluated the performance of our proposed algorithm to achieve energy minimal task offloading with users’ mobility and delay constraints into consideration. we used data of base stations within the Melbourne central business district area in Australia, which has a total area of 6.2 $km^2$ provided by the Australian Communications and Media Authority \cite{b6}. There are a total of 126 base stations situated inside the Melbourne CBD area.
+	We follow the Random waypoint mobility model for the users moving in the area covered by the base stations provided in the dataset. The random waypoint model is a random model for the movement of mobile users, and how their location, velocity and acceleration change over time. 
+	Without loss of generality, we refer to the parameter settings in the existing works \cite{b2}, \cite{b7}. The coverage radius of BS is randomly taken varying from 70 to 100 meters and the associated MEC’s CPU capacity is in [7, 20] GHz, computation power is in [3,5] watts and transmission power ranges from 0.1 to 1 watt. The bandwidth of the communication channel is set up as 1MHz. Users are moving with the speed of 1~3 MPH and generate tasks with input data size varies from 1 MB to 3 MB having CPU requirement is in [1,10] GHz and deadline constraint within [0.1,1] seconds. Users’ mobiles are having CPU capacity ranges from 1 to 10 GHz, transmission power is randomly taken from [7,15] watts and computation power from [7,10] watts. We consider mobile-execution and random-allocation as our baseline algorithms:
+	
+
+
+\begin{itemize}
+\item Local-Execution: Feasible Tasks satisfying delay constraint are executed within the mobiles without offloading. 
+\item Random-Allocation: Each user’s task is assigned to a server randomly chosen from the servers present along the user’s trajectory.
+\end{itemize}
+
+
+ 
+Fig. 2 depicts the higher Task completion percentage compared to the other 2 approaches by varying Task deadline constraint. DCEMTO’s task completion is 9.16\% higher than Random-Allocation and 27.08\% higher than Local-Execution on average. Also, Task completion percentage increases by increasing Deadline constraint.
+
+	Fig. 3 indicates the variation of average energy consumption with a change in the number of users. DCEMTO outperforms other approaches. Average energy consumption in DCEMTO is 10.5\% energy efficient than Random-Allocation and 46.5\% efficient than Local-Execution. 
+
+
+Fig. 4 shows how energy consumption varies with varying task input size. It’s clear that higher the task input size, energy consumption increases. It is due to higher transmission energy needed in task offloading. Energy consumption in DCEMTO is 9.55\% efficient than Random-Allocation approach.
+
 
 \section{Conclusion}
 In this paper, we explored the problem of Energy-minimal task offloading in the Mobile Edge Computing environment by considering the mobility of users and task deadline constraint. We mathematically formulated the problem and proposed a heuristic algorithm DCEMTO, where user mobility, task deadline and base station information are utilized to optimize the overall energy consumption for task execution. We evaluated our algorithm on Melbourne CBD base stations dataset by comparing with baseline approaches like Random-Allocation and Local-Execution. The results convey that our DCEMTO algorithm outperforms other approaches in metrics like Task Acceptance rate, Average Energy consumption and overall Energy Consumption.
